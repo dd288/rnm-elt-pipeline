@@ -4,35 +4,10 @@ About | Installation | Overview | Improvements
 
 ## About
 
-This ELT pipeline is designed to efficiently handle data related to the "Rick and Morty" universe, focusing on characters, locations, and episodes. The pipeline employs modern data engineering tools and follows best practices to ensure seamless data extraction, transformation, and loading processes. Here’s a detailed overview of each component and its function within the pipeline:
+This ELT pipeline is designed to process data from the [Rick and Morty API](https://rickandmortyapi.com/), including information about characters, locations, and episodes. The pipeline starts by extracting data using [Airbyte](https://airbyte.com), which pulls information directly from the API. This data is then stored in MinIO, using it as a datalake
 
-* Data Extraction (Airbyte):
+Within [MinIO](https://min.io/), the data undergoes transformations following the [medallion architecture](https://dataengineering.wiki/Concepts/Medallion+Architecture). This approach structures the data into three layers: Bronze (raw data), Silver (cleaned data), and Gold (aggregated data), ensuring that each stage is progressively more refined and ready for analysis.
 
-    Rick and Morty API Integration: Data is extracted from the Rick and Morty API using Airbyte. This integration allows for the continuous and automated ingestion of data about characters, locations, and episodes from the popular animated series.
+Once transformed, the data is loaded into a [Snowflake](https://www.snowflake.com/en/) warehouse using Airbyte again. In Snowflake, dbt (data build tool) is employed to model the data, making it easier to query and analyze. The final, modeled data is visualized with Streamlit, creating interactive and dynamic dashboards for exploring the rich details of the Rick and Morty universe.
 
-* Data Lake Storage (MinIO):
-    S3-Compatible Storage: The extracted data streams are stored in MinIO, an S3-compatible datalake. MinIO provides a scalable and secure environment for storing large datasets, ensuring that all extracted data is safely preserved.
-
-* Data Transformation (Medallion Architecture):
-    Bronze, Silver, Gold Layers: Within the MinIO datalake, data undergoes a series of transformations following the medallion architecture:
-        Bronze Layer: Raw data as ingested from the API.
-        Silver Layer: Cleaned and structured data.
-        Gold Layer: Aggregated and refined data, optimized for analysis.
-
-* Data Loading (Airbyte):
-
-   Snowflake Warehouse: The transformed data is then loaded into Snowflake, a cloud-based data warehouse. Airbyte facilitates this process, ensuring that data is efficiently transferred and stored in Snowflake for further processing.
-
-* Data Modeling (dbt):
-    Transformations and Models: In Snowflake, dbt (data build tool) is used to create data models. dbt enables the development of modular, reusable, and version-controlled data transformations, ensuring the integrity and usability of the data.
-
-* Data Visualization (Streamlit):
-    Interactive Dashboards: The final data is visualized using Streamlit. Streamlit provides an intuitive platform to create interactive and dynamic dashboards, allowing users to explore and analyze the Rick and Morty data with ease.
-
-* Orchestration (Airflow with Cosmos Astronomer Library):
-    Workflow Management: Apache Airflow orchestrates the entire pipeline, managing the scheduling and execution of tasks. The Cosmos Astronomer library enhances Airflow’s capabilities, ensuring reliable and efficient workflow management.
-
-* Containerization (Docker):
-    Consistent Environment: Docker is used to containerize all components of the pipeline. This ensures that each part of the pipeline runs in a consistent and isolated environment, reducing the risk of compatibility issues and facilitating seamless deployment.
-
-This pipeline provides a comprehensive solution for extracting, transforming, and analyzing data from the Rick and Morty API, enabling fans and analysts to gain deeper insights into the characters, locations, and episodes of the beloved series.
+The entire process is orchestrated by Apache Airflow, with the [Cosmos Astronomer](https://www.astronomer.io/cosmos/) library enhancing workflow management. Docker is used to containerize all components, ensuring a consistent and reliable environment for the pipeline to run smoothly. This comprehensive setup allows for efficient extraction, transformation, and visualization of Rick and Morty data, providing valuable insights into the series.
