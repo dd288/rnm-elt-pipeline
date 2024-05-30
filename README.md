@@ -1,1 +1,1 @@
-MAIN READ ME FILE
+![alt text](https://github.com/dd288/rnm-elt-pipeline/blob/main/images/rick.png "Logo Title Text 1")
