@@ -1,0 +1,10 @@
+models:
+  - name: fact_ram
+    columns:
+      - name: char_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ram_characters')
+              field: char_id
+              severity: warn

@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: ram
+    database: AIRBYTE_DATABASE
+    schema: AIRBYTE_SCHEMA
+    tables:
+      - name: characters
+        columns:
+          - name: id
+            tests:
+             - unique
+             - not_null
+      - name: episodes
+        columns:
+          - name: id
+            tests:
+             - unique
+             - not_null
+      - name: locations
+        columns:
+          - name: id
+            tests:
+             - unique
+             - not_null
