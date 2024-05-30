@@ -1,0 +1,21 @@
+div.css-totals {
+    background-color: darkgray;
+    border: 1px solid darkgray;
+    padding: 5% 5% 5% 10%;
+    border-radius: 10px;
+}
+
+
+.centered-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.custom-selectbox {
+    width: 100%;
+}
+
+.stSelectbox > div {
+     width: 100% !important; 
+    }
