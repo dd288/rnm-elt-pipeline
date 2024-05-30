@@ -7,7 +7,7 @@ About | Installation | Overview | Improvements
 This ELT pipeline is designed to efficiently handle data related to the "Rick and Morty" universe, focusing on characters, locations, and episodes. The pipeline employs modern data engineering tools and follows best practices to ensure seamless data extraction, transformation, and loading processes. Here’s a detailed overview of each component and its function within the pipeline:
 
 *    Data Extraction (Airbyte):
-.......Rick and Morty API Integration: Data is extracted from the Rick and Morty API using Airbyte. This integration allows for the continuous and automated ingestion of data about characters, locations, and episodes from the popular animated series.
+⋅⋅⋅Rick and Morty API Integration: Data is extracted from the Rick and Morty API using Airbyte. This integration allows for the continuous and automated ingestion of data about characters, locations, and episodes from the popular animated series.
 
 *    Data Lake Storage (MinIO):
         S3-Compatible Storage: The extracted data streams are stored in MinIO, an S3-compatible datalake. MinIO provides a scalable and secure environment for storing large datasets, ensuring that all extracted data is safely preserved.
