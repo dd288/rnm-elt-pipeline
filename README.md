@@ -15,3 +15,5 @@ The entire process is orchestrated by Apache Airflow, with the [Cosmos Astronome
 ## Overview
 
 ![alt text](https://github.com/dd288/rnm-elt-pipeline/blob/main/images/streamlit_app.gif "Streamlit GIF")
+
+#### ELT Diagram
