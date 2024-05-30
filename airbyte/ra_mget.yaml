@@ -1,0 +1,359 @@
+version: 0.85.0
+
+type: DeclarativeSource
+
+check:
+  type: CheckStream
+  stream_names:
+    - Characters
+
+definitions:
+  streams:
+    Episodes:
+      type: DeclarativeStream
+      name: Episodes
+      retriever:
+        type: SimpleRetriever
+        paginator:
+          type: DefaultPaginator
+          page_token_option:
+            type: RequestOption
+            field_name: page
+            inject_into: request_parameter
+          pagination_strategy:
+            type: CursorPagination
+            cursor_value: '{{ response.info.next.split("page=")[1] }}'
+            stop_condition: '{{ response.info.next is none }}'
+        requester:
+          $ref: '#/definitions/base_requester'
+          path: episode
+          http_method: GET
+        record_selector:
+          type: RecordSelector
+          extractor:
+            type: DpathExtractor
+            field_path: []
+      schema_loader:
+        type: InlineSchemaLoader
+        schema:
+          $ref: '#/schemas/Episodes'
+    Locations:
+      type: DeclarativeStream
+      name: Locations
+      retriever:
+        type: SimpleRetriever
+        paginator:
+          type: DefaultPaginator
+          page_token_option:
+            type: RequestOption
+            field_name: page
+            inject_into: request_parameter
+          pagination_strategy:
+            type: CursorPagination
+            cursor_value: '{{ response.info.next.split("page=")[1] }}'
+            stop_condition: '{{ response.info.next is none }}'
+        requester:
+          $ref: '#/definitions/base_requester'
+          path: location
+          http_method: GET
+        record_selector:
+          type: RecordSelector
+          extractor:
+            type: DpathExtractor
+            field_path: []
+      schema_loader:
+        type: InlineSchemaLoader
+        schema:
+          $ref: '#/schemas/Locations'
+    Characters:
+      type: DeclarativeStream
+      name: Characters
+      retriever:
+        type: SimpleRetriever
+        paginator:
+          type: DefaultPaginator
+          page_token_option:
+            type: RequestOption
+            field_name: page
+            inject_into: request_parameter
+          pagination_strategy:
+            type: CursorPagination
+            cursor_value: '{{ response.info.next.split("page=")[1] }}'
+            stop_condition: '{{ response.info.next is none }}'
+        requester:
+          $ref: '#/definitions/base_requester'
+          path: character
+          http_method: GET
+        record_selector:
+          type: RecordSelector
+          extractor:
+            type: DpathExtractor
+            field_path: []
+      schema_loader:
+        type: InlineSchemaLoader
+        schema:
+          $ref: '#/schemas/Characters'
+  base_requester:
+    type: HttpRequester
+    url_base: https://rickandmortyapi.com/api
+
+streams:
+  - $ref: '#/definitions/streams/Characters'
+  - $ref: '#/definitions/streams/Locations'
+  - $ref: '#/definitions/streams/Episodes'
+
+spec:
+  type: Spec
+  connection_specification:
+    type: object
+    $schema: http://json-schema.org/draft-07/schema#
+    required: []
+    properties: {}
+    additionalProperties: true
+
+metadata:
+  autoImportSchema:
+    Episodes: true
+    Locations: true
+    Characters: true
+
+schemas:
+  Episodes:
+    type: object
+    $schema: http://json-schema.org/schema#
+    properties:
+      info:
+        type:
+          - object
+          - 'null'
+        properties:
+          next:
+            type:
+              - string
+              - 'null'
+          prev:
+            type:
+              - string
+              - 'null'
+          count:
+            type:
+              - number
+              - 'null'
+          pages:
+            type:
+              - number
+              - 'null'
+      results:
+        type:
+          - array
+          - 'null'
+        items:
+          type:
+            - object
+            - 'null'
+          properties:
+            id:
+              type:
+                - number
+                - 'null'
+            url:
+              type:
+                - string
+                - 'null'
+            name:
+              type:
+                - string
+                - 'null'
+            created:
+              type:
+                - string
+                - 'null'
+            episode:
+              type:
+                - string
+                - 'null'
+            air_date:
+              type:
+                - string
+                - 'null'
+            characters:
+              type:
+                - array
+                - 'null'
+              items:
+                type:
+                  - string
+                  - 'null'
+    additionalProperties: true
+  Locations:
+    type: object
+    $schema: http://json-schema.org/schema#
+    properties:
+      info:
+        type:
+          - object
+          - 'null'
+        properties:
+          next:
+            type:
+              - string
+              - 'null'
+          prev:
+            type:
+              - string
+              - 'null'
+          count:
+            type:
+              - number
+              - 'null'
+          pages:
+            type:
+              - number
+              - 'null'
+      results:
+        type:
+          - array
+          - 'null'
+        items:
+          type:
+            - object
+            - 'null'
+          properties:
+            type:
+              type:
+                - string
+                - 'null'
+            id:
+              type:
+                - number
+                - 'null'
+            url:
+              type:
+                - string
+                - 'null'
+            name:
+              type:
+                - string
+                - 'null'
+            created:
+              type:
+                - string
+                - 'null'
+            dimension:
+              type:
+                - string
+                - 'null'
+            residents:
+              type:
+                - array
+                - 'null'
+              items:
+                type:
+                  - string
+                  - 'null'
+    additionalProperties: true
+  Characters:
+    type: object
+    $schema: http://json-schema.org/schema#
+    properties:
+      info:
+        type:
+          - object
+          - 'null'
+        properties:
+          next:
+            type:
+              - string
+              - 'null'
+          prev:
+            type:
+              - string
+              - 'null'
+          count:
+            type:
+              - number
+              - 'null'
+          pages:
+            type:
+              - number
+              - 'null'
+      results:
+        type:
+          - array
+          - 'null'
+        items:
+          type:
+            - object
+            - 'null'
+          properties:
+            type:
+              type:
+                - string
+                - 'null'
+            id:
+              type:
+                - number
+                - 'null'
+            url:
+              type:
+                - string
+                - 'null'
+            name:
+              type:
+                - string
+                - 'null'
+            image:
+              type:
+                - string
+                - 'null'
+            gender:
+              type:
+                - string
+                - 'null'
+            origin:
+              type:
+                - object
+                - 'null'
+              properties:
+                url:
+                  type:
+                    - string
+                    - 'null'
+                name:
+                  type:
+                    - string
+                    - 'null'
+            status:
+              type:
+                - string
+                - 'null'
+            created:
+              type:
+                - string
+                - 'null'
+            episode:
+              type:
+                - array
+                - 'null'
+              items:
+                type:
+                  - string
+                  - 'null'
+            species:
+              type:
+                - string
+                - 'null'
+            location:
+              type:
+                - object
+                - 'null'
+              properties:
+                url:
+                  type:
+                    - string
+                    - 'null'
+                name:
+                  type:
+                    - string
+                    - 'null'
+    additionalProperties: true
