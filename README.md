@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-  <img src="https://github.com/dd288/rnm-elt-pipeline/blob/main/images/rick.jpg" alt="Rick and Morty Characters" style="width:50%;"/>
+  <img src="https://github.com/dd288/rnm-elt-pipeline/blob/main/images/rick.jpg" alt="Rick and Morty Characters" style="width:100%;"/>
 </div>
 
 <div align="center">
