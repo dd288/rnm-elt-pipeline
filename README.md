@@ -10,7 +10,7 @@
 
 <div align="center">
   
-  [About](#about) | [Overview](#overview) | [Installation](#installation) |  [Improvements](#improvements)
+ ##### [About](#about) | [Overview](#overview) | [Installation](#installation) |  [Improvements](#improvements)
   
 </div>
 
