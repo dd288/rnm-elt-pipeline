@@ -7,6 +7,7 @@ About | Installation | Overview | Improvements
 This ELT pipeline is designed to efficiently handle data related to the "Rick and Morty" universe, focusing on characters, locations, and episodes. The pipeline employs modern data engineering tools and follows best practices to ensure seamless data extraction, transformation, and loading processes. Here’s a detailed overview of each component and its function within the pipeline:
 
 * Data Extraction (Airbyte):
+
     Rick and Morty API Integration: Data is extracted from the Rick and Morty API using Airbyte. This integration allows for the continuous and automated ingestion of data about characters, locations, and episodes from the popular animated series.
 
 * Data Lake Storage (MinIO):
@@ -19,6 +20,7 @@ This ELT pipeline is designed to efficiently handle data related to the "Rick an
         Gold Layer: Aggregated and refined data, optimized for analysis.
 
 * Data Loading (Airbyte):
+
    Snowflake Warehouse: The transformed data is then loaded into Snowflake, a cloud-based data warehouse. Airbyte facilitates this process, ensuring that data is efficiently transferred and stored in Snowflake for further processing.
 
 * Data Modeling (dbt):
