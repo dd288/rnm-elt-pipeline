@@ -19,7 +19,7 @@ This ELT pipeline is designed to efficiently handle data related to the "Rick an
         Gold Layer: Aggregated and refined data, optimized for analysis.
 
 * Data Loading (Airbyte):
-    Snowflake Warehouse: The transformed data is then loaded into Snowflake, a cloud-based data warehouse. Airbyte facilitates this process, ensuring that data is efficiently transferred and stored in Snowflake for further processing.
+   Snowflake Warehouse: The transformed data is then loaded into Snowflake, a cloud-based data warehouse. Airbyte facilitates this process, ensuring that data is efficiently transferred and stored in Snowflake for further processing.
 
 * Data Modeling (dbt):
     Transformations and Models: In Snowflake, dbt (data build tool) is used to create data models. dbt enables the development of modular, reusable, and version-controlled data transformations, ensuring the integrity and usability of the data.
