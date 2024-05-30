@@ -5,6 +5,10 @@
 </div>
 
 <div align="center">
+  <img src="https://github.com/dd288/rnm-elt-pipeline/blob/main/images/rick.png" alt="Rick and Morty Characters" style="width:50%;"/>
+</div>
+
+<div align="center">
   
   [About](#about) | [Overview](#overview) | [Installation](#installation) |  [Improvements](#improvements)
   
