@@ -1,6 +1,7 @@
 # Rick and Morty ELT
 
-About | Installation | Overview | Improvements
+<p style="text-align: center;">About | Installation | Overview | Improvements alignment</p>
+
 
 ## About
 
