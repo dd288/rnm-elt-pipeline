@@ -61,6 +61,6 @@ The entire process is orchestrated by **Apache Airflow**, with the **_Cosmos Ast
 
 ### Improvements
 
-The installation process can be dramatically improved by create a Dockerfile & docker compose. Also terraform can be added to automate the connection process.
+The installation process can be dramatically improved by creating a Dockerfile & docker compose. Also terraform can be added to automate the connection process.
 
 Another addition could be pySpark for better data processing, but it is not needed with data quantity and quality.
